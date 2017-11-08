@@ -1,7 +1,7 @@
-# Личный проект «YetiCave» 
+# Личный проект «YetiCave»
 
 * Студент: [Артем Сенин](https://up.htmlacademy.ru/php/3/user/405293).
-* Наставник: `Неизвестно`.
+* Наставник: [Николай Пойманов](https://htmlacademy.ru/profile/poymanov).
 
 ---
 

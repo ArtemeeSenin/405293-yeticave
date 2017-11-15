@@ -20,7 +20,14 @@ $now = strtotime('now');
 $lot_time_remaining = gmdate("H:i:s", $tomorrow - $now);
 
 // Categories
-$categories = ['Доски и лыжи', 'Крепления','Ботинки','Одежда','Инструменты','Разное'];
+$categories = [
+    'boards' => 'Доски и лыжи',
+    'attachment' => 'Крепления',
+    'boots' => 'Ботинки',  
+    'clothing' => 'Одежда',
+    'tools' => 'Инструменты',
+    'other' => 'Разное',
+];
 
 $products = [
   [
@@ -114,11 +121,11 @@ $products = [
         <h2 class="promo__title">Нужен стафф для катки?</h2>
         <p class="promo__text">На нашем интернет-аукционе ты найдёшь самое эксклюзивное сноубордическое и горнолыжное снаряжение.</p>
         <ul class="promo__list">
-          <?php for($i = 0; $i < count($categories); $i++):?>
-            <li class="promo__item promo__item--boards">
-                <a class="promo__link" href="all-lots.html"><?=$categories[$i]?></a>
+          <?php foreach($categories as $key => $value):?>
+            <li class="promo__item promo__item--<?=$key?>">
+                <a class="promo__link" href="all-lots.html"><?=$value?></a>
             </li>
-          <?php endfor;?>
+          <?php endforeach;?>
         </ul>
     </section>
     <section class="lots">

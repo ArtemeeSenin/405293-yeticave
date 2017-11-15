@@ -7,6 +7,20 @@ $bets = [
     ['name' => 'Евгений', 'price' => 10500, 'ts' => strtotime('-' . rand(25, 50) .' hour')],
     ['name' => 'Семён', 'price' => 10000, 'ts' => strtotime('last week')]
 ];
+
+function time_converter($bet_time){
+  $now_time = time();
+  $differene_time = $now_time - $bet_time;
+  if($differene_time >= 86400){
+    return date('d.j.y в G:i', $now_time - $differene_time);
+  } else {
+    if($differene_time >= 3600){
+      return ($differene_time / 3600) . ' часов назад';
+    } else {
+      return ($differene_time / 60) . ' минут назад';
+    }
+  }
+}
 ?>
 
 <!DOCTYPE html>
@@ -111,11 +125,14 @@ $bets = [
                     <h3>История ставок (<span>4</span>)</h3>
                     <!-- заполните эту таблицу данными из массива $bets-->
                     <table class="history__list">
+                      <?php for($i = 0; $i < count($bets); $i++):
+                        $current_bet = $bets[$i]; ?>
                         <tr class="history__item">
-                            <td class="history__name"><!-- имя автора--></td>
-                            <td class="history__price"><!-- цена--> р</td>
-                            <td class="history__time"><!-- дата в человеческом формате--></td>
+                            <td class="history__name"><?=$current_bet['name']?></td>
+                            <td class="history__price"><?=$current_bet['price']?> р</td>
+                            <td class="history__time"><?=time_converter($current_bet['ts']);?></td>
                         </tr>
+                        <?php endfor;?>
                     </table>
                 </div>
             </div>

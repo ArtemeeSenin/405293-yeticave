@@ -8,6 +8,8 @@ $bets = [
     ['name' => 'Семён', 'price' => 10000, 'ts' => strtotime('last week')]
 ];
 
+$item_id = $_GET['id'];
+$lot_data = $template_args['products'][$item_id];
 
 ?>
     <nav class="nav">
@@ -33,13 +35,17 @@ $bets = [
         </ul>
     </nav>
     <section class="lot-item container">
-        <h2>DC Ply Mens 2016/2017 Snowboard</h2>
+      <?php
+      if(isset($template_args['products'][$item_id])):
+        $lot_data = $template_args['products'][$item_id];
+         ?>
+        <h2><?=$lot_data['name'];?></h2>
         <div class="lot-item__content">
             <div class="lot-item__left">
                 <div class="lot-item__image">
-                    <img src="img/lot-image.jpg" width="730" height="548" alt="Сноуборд">
+                    <img src="<?=$lot_data['url'];?>" width="730" height="548" alt="Сноуборд">
                 </div>
-                <p class="lot-item__category">Категория: <span>Доски и лыжи</span></p>
+                <p class="lot-item__category">Категория: <span><?=$lot_data['category'];?></span></p>
                 <p class="lot-item__description">Легкий маневренный сноуборд, готовый дать жару в любом парке, растопив
                     снег
                     мощным щелчкоми четкими дугами. Стекловолокно Bi-Ax, уложенное в двух направлениях, наделяет этот
@@ -59,7 +65,7 @@ $bets = [
                     <div class="lot-item__cost-state">
                         <div class="lot-item__rate">
                             <span class="lot-item__amount">Текущая цена</span>
-                            <span class="lot-item__cost">11 500</span>
+                            <span class="lot-item__cost"><?=$lot_data['price'];?></span>
                         </div>
                         <div class="lot-item__min-cost">
                             Мин. ставка <span>12 000 р</span>
@@ -89,4 +95,10 @@ $bets = [
                 </div>
             </div>
         </div>
+        <?php
+      else: ?>
+        <h2>Сожалеем, такого товара не существует</h2>
+        <?php
+        http_response_code(404);
+      endif; ?>
     </section>

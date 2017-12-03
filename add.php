@@ -1,0 +1,9 @@
+<?php
+  require_once('functions.php');
+
+  $page_content = include_template('./templates/_add-lot.php', ['categories' => $categories, 'products' => $products, 'lot_time_remaining' => $lot_time_remaining]);
+
+  $layout = include_template('./templates/layout.php', ['content' => $page_content, 'page_title' => 'Добавление лота', 'main_class' => NULL, 'is_auth' => $is_auth, 'user_name' => $user_name, 'user_avatar' => $user_avatar]);
+
+  print($layout);
+ ?>

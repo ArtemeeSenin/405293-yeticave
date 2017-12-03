@@ -12,28 +12,7 @@ $item_id = $_GET['id'];
 $lot_data = $template_args['products'][$item_id];
 
 ?>
-    <nav class="nav">
-        <ul class="nav__list container">
-            <li class="nav__item">
-                <a href="">Доски и лыжи</a>
-            </li>
-            <li class="nav__item">
-                <a href="">Крепления</a>
-            </li>
-            <li class="nav__item">
-                <a href="">Ботинки</a>
-            </li>
-            <li class="nav__item">
-                <a href="">Одежда</a>
-            </li>
-            <li class="nav__item">
-                <a href="">Инструменты</a>
-            </li>
-            <li class="nav__item">
-                <a href="">Разное</a>
-            </li>
-        </ul>
-    </nav>
+    <?=include_template('./templates/_top-nav.php');?>
     <section class="lot-item container">
       <?php
       if(isset($template_args['products'][$item_id])):
